@@ -1,52 +1,58 @@
 // TODO ifndef
 
+#define BIT_Mask        0x1F
 
 #define BIT_0_Pos       10
+#define BIT_0_Msk       (BIT_Mask << BIT_0_Pos)
 #define BIT_1_Pos       5
+#define BIT_1_Msk       (BIT_Mask << BIT_1_Pos)
 #define BIT_2_Pos       0
+#define BIT_2_Msk       (BIT_Mask << BIT_2_Pos)
 #define BIT_3_Pos       15
+#define BIT_3_Msk       (BIT_Mask << BIT_3_Pos)
 #define BIT_4_Pos       10
+#define BIT_4_Msk       (BIT_Mask << BIT_4_Pos)
 #define BIT_5_Pos       5
+#define BIT_5_Msk       (BIT_Mask << BIT_5_Pos)
 #define BIT_6_Pos       0
-
-#define BIT_Mask        0x1F
+#define BIT_6_Msk       (BIT_Mask << BIT_6_Pos)
 
 #define HEX_BASE	16
 
 typedef enum
 {
-  HAL_LVDS_MAP_R_0  = 0x00U,
-  HAL_LVDS_MAP_R_1  = 0x01U,
-  HAL_LVDS_MAP_R_2  = 0x02U,
-  HAL_LVDS_MAP_R_3  = 0x03U,
-  HAL_LVDS_MAP_R_4  = 0x04U,
-  HAL_LVDS_MAP_R_5  = 0x05U,
-  HAL_LVDS_MAP_R_6  = 0x06U,
-  HAL_LVDS_MAP_R_7  = 0x07U,
-  HAL_LVDS_MAP_G_0  = 0x08U,
-  HAL_LVDS_MAP_G_1  = 0x09U,
-  HAL_LVDS_MAP_G_2  = 0x0AU,
-  HAL_LVDS_MAP_G_3  = 0x0BU,
-  HAL_LVDS_MAP_G_4  = 0x0CU,
-  HAL_LVDS_MAP_G_5  = 0x0DU,
-  HAL_LVDS_MAP_G_6  = 0x0EU,
-  HAL_LVDS_MAP_G_7  = 0x0FU,
-  HAL_LVDS_MAP_B_0  = 0x10U,
-  HAL_LVDS_MAP_B_1  = 0x11U,
-  HAL_LVDS_MAP_B_2  = 0x12U,
-  HAL_LVDS_MAP_B_3  = 0x13U,
-  HAL_LVDS_MAP_B_4  = 0x14U,
-  HAL_LVDS_MAP_B_5  = 0x15U,
-  HAL_LVDS_MAP_B_6  = 0x16U,
-  HAL_LVDS_MAP_B_7  = 0x17U,
-  HAL_LVDS_MAP_H_S  = 0x18U,
-  HAL_LVDS_MAP_V_S  = 0x19U,
-  HAL_LVDS_MAP_D_E  = 0x1AU,
-  HAL_LVDS_MAP_C_E  = 0x1BU,
-  HAL_LVDS_MAP_C_I  = 0x1CU,
-  HAL_LVDS_MAP_TOG  = 0x1DU,
-  HAL_LVDS_MAP_ONE  = 0x1EU,
-  HAL_LVDS_MAP_ZER  = 0x1FU,
+  HAL_LVDS_MAP_R_0  = 0x00,
+  HAL_LVDS_MAP_R_1  = 0x01,
+  HAL_LVDS_MAP_R_2  = 0x02,
+  HAL_LVDS_MAP_R_3  = 0x03,
+  HAL_LVDS_MAP_R_4  = 0x04,
+  HAL_LVDS_MAP_R_5  = 0x05,
+  HAL_LVDS_MAP_R_6  = 0x06,
+  HAL_LVDS_MAP_R_7  = 0x07,
+  HAL_LVDS_MAP_G_0  = 0x08,
+  HAL_LVDS_MAP_G_1  = 0x09,
+  HAL_LVDS_MAP_G_2  = 0x0A,
+  HAL_LVDS_MAP_G_3  = 0x0B,
+  HAL_LVDS_MAP_G_4  = 0x0C,
+  HAL_LVDS_MAP_G_5  = 0x0D,
+  HAL_LVDS_MAP_G_6  = 0x0E,
+  HAL_LVDS_MAP_G_7  = 0x0F,
+  HAL_LVDS_MAP_B_0  = 0x10,
+  HAL_LVDS_MAP_B_1  = 0x11,
+  HAL_LVDS_MAP_B_2  = 0x12,
+  HAL_LVDS_MAP_B_3  = 0x13,
+  HAL_LVDS_MAP_B_4  = 0x14,
+  HAL_LVDS_MAP_B_5  = 0x15,
+  HAL_LVDS_MAP_B_6  = 0x16,
+  HAL_LVDS_MAP_B_7  = 0x17,
+  HAL_LVDS_MAP_H_S  = 0x18,
+  HAL_LVDS_MAP_V_S  = 0x19,
+  HAL_LVDS_MAP_D_E  = 0x1A,
+  HAL_LVDS_MAP_C_E  = 0x1B,
+  HAL_LVDS_MAP_C_I  = 0x1C,
+  HAL_LVDS_MAP_TOG  = 0x1D,
+  HAL_LVDS_MAP_ONE  = 0x1E,
+  HAL_LVDS_MAP_ZER  = 0x1F,
 } HAL_LVDS_MapTypeDef;
 
 
@@ -123,4 +129,5 @@ const HAL_LVDS_MapTypeDef HAL_LVDS_Map_DSKW[5][7] = {
     {HAL_LVDS_MAP_C_E, HAL_LVDS_MAP_ZER, HAL_LVDS_MAP_ZER, HAL_LVDS_MAP_ZER, HAL_LVDS_MAP_ZER, HAL_LVDS_MAP_ZER, HAL_LVDS_MAP_ZER}};
 #endif
 
-int LVDS_Decode(int reg, int *bitmap);
+int LVDS_Decode(int reg, int *bitmap, int msb);
+int LVDS_Convert(int bit, char *str);
