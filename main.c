@@ -42,39 +42,39 @@ int LVDS_Convert(int bit, char *str)
 {
         switch (bit)
         {
-        case HAL_LVDS_MAP_R_0:          str = "<R0>";           break;
-        case HAL_LVDS_MAP_R_1:          str = "<R1>";           break;
-        case HAL_LVDS_MAP_R_2:          str = "<R2>";           break;
-        case HAL_LVDS_MAP_R_3:          str = "<R3>";           break;
-        case HAL_LVDS_MAP_R_4:          str = "<R4>";           break;
-        case HAL_LVDS_MAP_R_5:          str = "<R5>";           break;
-        case HAL_LVDS_MAP_R_6:          str = "<R6>";           break;
-        case HAL_LVDS_MAP_R_7:          str = "<R7>";           break;
-        case HAL_LVDS_MAP_G_0:          str = "<G0>";           break;
-        case HAL_LVDS_MAP_G_1:          str = "<G1>";           break;
-        case HAL_LVDS_MAP_G_2:          str = "<G2>";           break;
-        case HAL_LVDS_MAP_G_3:          str = "<G3>";           break;
-        case HAL_LVDS_MAP_G_4:          str = "<G4>";           break;
-        case HAL_LVDS_MAP_G_5:          str = "<G5>";           break;
-        case HAL_LVDS_MAP_G_6:          str = "<G6>";           break;
-        case HAL_LVDS_MAP_G_7:          str = "<G7>";           break;
-        case HAL_LVDS_MAP_B_0:          str = "<B0>";           break;
-        case HAL_LVDS_MAP_B_1:          str = "<B1>";           break;
-        case HAL_LVDS_MAP_B_2:          str = "<B2>";           break;
-        case HAL_LVDS_MAP_B_3:          str = "<B3>";           break;
-        case HAL_LVDS_MAP_B_4:          str = "<B4>";           break;
-        case HAL_LVDS_MAP_B_5:          str = "<B5>";           break;
-        case HAL_LVDS_MAP_B_6:          str = "<B6>";           break;
-        case HAL_LVDS_MAP_B_7:          str = "<B7>";           break;
-        case HAL_LVDS_MAP_H_S:          str = "<HS>";           break;
-        case HAL_LVDS_MAP_V_S:          str = "<VS>";           break;
-        case HAL_LVDS_MAP_D_E:          str = "<DE>";           break;
-        case HAL_LVDS_MAP_C_E:          str = "<CE>";           break;
-        case HAL_LVDS_MAP_C_I:          str = "<CI>";           break;
-        case HAL_LVDS_MAP_TOG:          str = "<TO>";           break;
-        case HAL_LVDS_MAP_ONE:          str = "<01>";           break;
-        case HAL_LVDS_MAP_ZER:          str = "<00>";           break;
-        default:                                                break;
+        case HAL_LVDS_MAP_R_0:          snprintf(str, 5, "<R0>");           break;
+        case HAL_LVDS_MAP_R_1:          snprintf(str, 5, "<R1>");           break;
+        case HAL_LVDS_MAP_R_2:          snprintf(str, 5, "<R2>");           break;
+        case HAL_LVDS_MAP_R_3:          snprintf(str, 5, "<R3>");           break;
+        case HAL_LVDS_MAP_R_4:          snprintf(str, 5, "<R4>");           break;
+        case HAL_LVDS_MAP_R_5:          snprintf(str, 5, "<R5>");           break;
+        case HAL_LVDS_MAP_R_6:          snprintf(str, 5, "<R6>");           break;
+        case HAL_LVDS_MAP_R_7:          snprintf(str, 5, "<R7>");           break;
+        case HAL_LVDS_MAP_G_0:          snprintf(str, 5, "<G0>");           break;
+        case HAL_LVDS_MAP_G_1:          snprintf(str, 5, "<G1>");           break;
+        case HAL_LVDS_MAP_G_2:          snprintf(str, 5, "<G2>");           break;
+        case HAL_LVDS_MAP_G_3:          snprintf(str, 5, "<G3>");           break;
+        case HAL_LVDS_MAP_G_4:          snprintf(str, 5, "<G4>");           break;
+        case HAL_LVDS_MAP_G_5:          snprintf(str, 5, "<G5>");           break;
+        case HAL_LVDS_MAP_G_6:          snprintf(str, 5, "<G6>");           break;
+        case HAL_LVDS_MAP_G_7:          snprintf(str, 5, "<G7>");           break;
+        case HAL_LVDS_MAP_B_0:          snprintf(str, 5, "<B0>");           break;
+        case HAL_LVDS_MAP_B_1:          snprintf(str, 5, "<B1>");           break;
+        case HAL_LVDS_MAP_B_2:          snprintf(str, 5, "<B2>");           break;
+        case HAL_LVDS_MAP_B_3:          snprintf(str, 5, "<B3>");           break;
+        case HAL_LVDS_MAP_B_4:          snprintf(str, 5, "<B4>");           break;
+        case HAL_LVDS_MAP_B_5:          snprintf(str, 5, "<B5>");           break;
+        case HAL_LVDS_MAP_B_6:          snprintf(str, 5, "<B6>");           break;
+        case HAL_LVDS_MAP_B_7:          snprintf(str, 5, "<B7>");           break;
+        case HAL_LVDS_MAP_H_S:          snprintf(str, 5, "<HS>");           break;
+        case HAL_LVDS_MAP_V_S:          snprintf(str, 5, "<VS>");           break;
+        case HAL_LVDS_MAP_D_E:          snprintf(str, 5, "<DE>");           break;
+        case HAL_LVDS_MAP_C_E:          snprintf(str, 5, "<CE>");           break;
+        case HAL_LVDS_MAP_C_I:          snprintf(str, 5, "<CI>");           break;
+        case HAL_LVDS_MAP_TOG:          snprintf(str, 5, "<TO>");           break;
+        case HAL_LVDS_MAP_ONE:          snprintf(str, 5, "<01>");           break;
+        case HAL_LVDS_MAP_ZER:          snprintf(str, 5, "<00>");           break;
+        default:				                            break;
         }
 
         return 0;
@@ -83,7 +83,7 @@ int LVDS_Convert(int bit, char *str)
 int main(int argc, char **argv)
 {
 	int bitmap[7] = {0};
-        char* str=0;
+        char str[5] = {0};
 
 /*        if (argc != 2)*/
 /*                return 1;*/
@@ -98,7 +98,6 @@ int main(int argc, char **argv)
 
         for (int i=0; i<7; i++)
         {
-                printf("%d %d\n", bitmap[i], HAL_LVDS_MAP_G_2);
                 LVDS_Convert(bitmap[i], str);
                 printf("%s", str);
         }
