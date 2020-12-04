@@ -71,6 +71,13 @@ const HAL_LVDS_MapTypeDef HAL_LVDS_Map_JEIDA_RGB888[5][7] = {
     {HAL_LVDS_MAP_D_E, HAL_LVDS_MAP_V_S, HAL_LVDS_MAP_H_S, HAL_LVDS_MAP_B_7, HAL_LVDS_MAP_B_6, HAL_LVDS_MAP_B_5, HAL_LVDS_MAP_B_4},
     {HAL_LVDS_MAP_C_E, HAL_LVDS_MAP_B_1, HAL_LVDS_MAP_B_0, HAL_LVDS_MAP_G_1, HAL_LVDS_MAP_G_0, HAL_LVDS_MAP_R_1, HAL_LVDS_MAP_R_0}};
 
+//const int HAL_LVDS_Regs_JEIDA_RGB888[5][2] = {
+//        {0x000FFFDE, 0x00007BDF},
+//        {0x00029062, 0x000028E6},
+//        {},
+//        {},
+//        {}};
+
 // Expected VESA-RGB888 data to be sent in LSB format
 //          bit6 ............................bit0
 // CHAN0   {ONE, ONE, ZERO, ZERO, ZERO, ONE, ONE}
@@ -131,3 +138,4 @@ const HAL_LVDS_MapTypeDef HAL_LVDS_Map_DSKW[5][7] = {
 
 int LVDS_Decode(int reg, int *bitmap, int msb);
 int LVDS_Convert(int bit, char *str);
+int LVDS_DecodeLane(int lsbreg, int msbreg, int *bitmap, char *lane);

@@ -12,15 +12,10 @@
 
 int LVDS_Decode(int reg, int *bitmap, int lsb)
 {
-/*        int bitmap[7];*/
-
         if (reg > 0xFFFFF || reg < 0x0)
                 return 1;
         if (!((lsb == 0) || (lsb == 1)))
                 return 1;
-
-/*        printf("%08x\n", (BIT_0_Msk));*/
-/*        printf("%08x\n", (reg & BIT_0_Msk) >> BIT_0_Pos);*/
 
         if (!lsb)
         {
@@ -36,6 +31,22 @@ int LVDS_Decode(int reg, int *bitmap, int lsb)
         }
 
         return 0;
+}
+
+int LVDS_DecodeLane(int lsbreg, int msbreg, int *bitmap, char *lane)
+{
+        char str[5] = {0};
+
+	LVDS_Decode(msbreg, bitmap, 0);
+        LVDS_Decode(lsbreg, bitmap, 1);
+
+        for (int i=0; i<7; i++)
+        {
+                LVDS_Convert(bitmap[i], str);
+                snprintf(lane + i*4*sizeof(char), 5, "%s", str);
+        }
+
+	return 0;
 }
 
 int LVDS_Convert(int bit, char *str)
@@ -82,8 +93,8 @@ int LVDS_Convert(int bit, char *str)
 
 int main(int argc, char **argv)
 {
-	int bitmap[7] = {0};
-        char str[5] = {0};
+	int	bitmap[7]	= {0};
+	char	lane[36]	= {0};
 
 /*        if (argc != 2)*/
 /*                return 1;*/
@@ -91,18 +102,12 @@ int main(int argc, char **argv)
 /*        int reg = (int)strtol(argv[1], NULL, HEX_BASE);*/
 /*        printf("%d\n", reg);*/
 
-        // JEIDA-RGB888 DL0 :   G2 R7 R6 R5 R4 R3 R2
+	// JEIDA-RGB888 DL0 :   G2 R7 R6 R5 R4 R3 R2
         //                      0A 07 06 05 04 03 02
-        LVDS_Decode(0x000028E6, &bitmap, 0);
-        LVDS_Decode(0x00029062, &bitmap, 1);
+	LVDS_DecodeLane(0x000FFFDE, 0x00007BDF, bitmap, lane);
 
-        for (int i=0; i<7; i++)
-        {
-                LVDS_Convert(bitmap[i], str);
-                printf("%s", str);
-        }
-
-        printf("%02x %02x %02x %02x %02x %02x %02x\n",
+	printf("%s\n", lane);
+        printf(" %02x  %02x  %02x  %02x  %02x  %02x  %02x\n",
                bitmap[0], bitmap[1], bitmap[2], bitmap[3], bitmap[4], bitmap[5], bitmap[6]);
 
 	return 0;
