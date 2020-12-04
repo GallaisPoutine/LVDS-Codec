@@ -96,15 +96,18 @@ int main(int argc, char **argv)
 	int	bitmap[7]	= {0};
 	char	lane[36]	= {0};
 
-/*        if (argc != 2)*/
-/*                return 1;*/
+	if (argc != 3)
+	{
+		printf("./a.out lsbreg msbreg\n");
+		printf("Example :\n");
+		printf("./a.out 0x000FFFDE 0x00007BDF\n");
+		return 1;
+	}
 
-/*        int reg = (int)strtol(argv[1], NULL, HEX_BASE);*/
-/*        printf("%d\n", reg);*/
+	int lsbreg = (int)strtol(argv[1], NULL, HEX_BASE);
+	int msbreg = (int)strtol(argv[2], NULL, HEX_BASE);
 
-	// JEIDA-RGB888 DL0 :   G2 R7 R6 R5 R4 R3 R2
-        //                      0A 07 06 05 04 03 02
-	LVDS_DecodeLane(0x000FFFDE, 0x00007BDF, bitmap, lane);
+	LVDS_DecodeLane(lsbreg, msbreg, bitmap, lane);
 
 	printf("%s\n", lane);
         printf(" %02x  %02x  %02x  %02x  %02x  %02x  %02x\n",
