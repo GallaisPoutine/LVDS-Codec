@@ -73,12 +73,12 @@ const HAL_LVDS_MapTypeDef HAL_LVDS_Map_JEIDA_RGB888[5][7] = {
     {HAL_LVDS_MAP_D_E, HAL_LVDS_MAP_V_S, HAL_LVDS_MAP_H_S, HAL_LVDS_MAP_B_7, HAL_LVDS_MAP_B_6, HAL_LVDS_MAP_B_5, HAL_LVDS_MAP_B_4},
     {HAL_LVDS_MAP_C_E, HAL_LVDS_MAP_B_1, HAL_LVDS_MAP_B_0, HAL_LVDS_MAP_G_1, HAL_LVDS_MAP_G_0, HAL_LVDS_MAP_R_1, HAL_LVDS_MAP_R_0}};
 
-//const int HAL_LVDS_Regs_JEIDA_RGB888[5][2] = {
-//        {0x000FFFDE, 0x00007BDF},
-//        {0x00029062, 0x000028E6},
-//        {},
-//        {},
-//        {}};
+const int HAL_LVDS_Regs_JEIDA_RGB888[5][2] = {
+        {0x000FFFDE, 0x00007BDF},
+        {0x00029062, 0x000028E6},
+        {0x0007358B, 0x00004E4F},
+        {0x000BDAB4, 0x00006B38},
+        {0x0004A020, 0x00007E30}};
 
 // Expected VESA-RGB888 data to be sent in LSB format
 //          bit6 ............................bit0
@@ -94,6 +94,13 @@ const HAL_LVDS_MapTypeDef HAL_LVDS_Map_VESA_RGB888[5][7] = {
     {HAL_LVDS_MAP_B_1, HAL_LVDS_MAP_B_0, HAL_LVDS_MAP_G_5, HAL_LVDS_MAP_G_4, HAL_LVDS_MAP_G_3, HAL_LVDS_MAP_G_2, HAL_LVDS_MAP_G_1},
     {HAL_LVDS_MAP_D_E, HAL_LVDS_MAP_V_S, HAL_LVDS_MAP_H_S, HAL_LVDS_MAP_B_5, HAL_LVDS_MAP_B_4, HAL_LVDS_MAP_B_3, HAL_LVDS_MAP_B_2},
     {HAL_LVDS_MAP_C_E, HAL_LVDS_MAP_B_7, HAL_LVDS_MAP_B_6, HAL_LVDS_MAP_G_7, HAL_LVDS_MAP_G_6, HAL_LVDS_MAP_R_7, HAL_LVDS_MAP_R_6}};
+
+const int HAL_LVDS_Regs_VESA_RGB888[5][2] = {
+        {0x000FFFDE, 0x00007BDF},
+        {0x00018820, 0x000020A4},
+        {0x00062D49, 0x0000460D},
+        {0x000AD272, 0x00006B38},
+        {0x0007B8E6, 0x00007EF6}};
 
 // Expected JEIDA/VESA-RGB666 data to be sent in LSB format
 //          bit6 ............................bit0
