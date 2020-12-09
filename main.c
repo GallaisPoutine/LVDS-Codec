@@ -116,14 +116,14 @@ int main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		printf("./a.out lsbreg msbreg\n");
+		printf("./a.out msbreg lsbreg\n");
 		printf("Example :\n");
-		printf("./a.out 0x000FFFDE 0x00007BDF\n");
+		printf("./a.out 0x00007BDF 0x000FFFDE\n");
 		return 1;
 	}
 
-	int lsbreg = (int)strtol(argv[1], NULL, HEX_BASE);
-	int msbreg = (int)strtol(argv[2], NULL, HEX_BASE);
+	int msbreg = (int)strtol(argv[1], NULL, HEX_BASE);
+	int lsbreg = (int)strtol(argv[2], NULL, HEX_BASE);
 
 	LVDS_DecodeLane(lsbreg, msbreg, bitmap, lane);
 
