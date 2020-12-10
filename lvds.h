@@ -1,4 +1,6 @@
-// TODO ifndef
+
+#ifndef _LVDS_H
+#define _LVDS_H
 
 #define BIT_Mask        0x1F
 
@@ -139,3 +141,6 @@ const HAL_LVDS_MapTypeDef HAL_LVDS_Map_DSKW[5][7] = {
 int LVDS_Decode(int reg, int *bitmap, int msb);
 int LVDS_Convert(int bit, char *str);
 int LVDS_DecodeLane(int lsbreg, int msbreg, int *bitmap, char *lane);
+int LVDS_Encode(int *bitmap, char *lane);
+
+#endif /* _LVDS_H */

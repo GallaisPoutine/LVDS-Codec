@@ -1,12 +1,12 @@
-// SPDX-License-Identifier: GPL-2.0
+// SPDX-License-Identifier: GPL-3.0
 /*
- * Copyright (C) 2020, STMicroelectronics - All Rights Reserved
- * Author(s): Raphaël GALLAIS-POU <raphael.gallais-pou@st.com> for STMicroelectronics.
- * gcc -DDSKW_TOGGLE main.c
+ * Author(s): Raphaël GALLAIS-POU <raphael.gallais.pou@gmail.com>
+ * gcc -static -DDSKW_TOGGLE main.c
  */
 
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "lvds.h"
 
@@ -37,8 +37,10 @@ int LVDS_DecodeLane(int lsbreg, int msbreg, int *bitmap, char *lane)
 {
         char str[5] = {0};
 
-	LVDS_Decode(msbreg, bitmap, 0);
-        LVDS_Decode(lsbreg, bitmap, 1);
+	if (LVDS_Decode(msbreg, bitmap, 0))
+		return 1;
+        if (LVDS_Decode(lsbreg, bitmap, 1))
+		return 1;
 
         for (int i=0; i<7; i++)
         {
@@ -89,6 +91,22 @@ int LVDS_Convert(int bit, char *str)
         }
 
         return 0;
+}
+
+int LVDS_Encode(int *bitmap, char *lane)
+{
+	char bit[3] = {0};
+
+	if (strlen(lane) != 12)
+		return 1;
+	if (bitmap == NULL)
+		return 1;
+
+	strncpy(lane, bit, (size_t) 2);
+	bit[2] = '\0';
+
+	// TODO convert to int
+	return 0;
 }
 
 int main(int argc, char **argv)
